@@ -1,9 +1,11 @@
 import optparse
+import functools
 
 test = "0 1 10 99 999"
 test2 = "125 17"
 data = "5 62914 65 972 0 805922 6521 1639064"
 
+@functools.lru_cache(maxsize=None)
 def update_stone(stone):
     ndigits = len(str(stone))
     #If the stone is engraved with the number 0, it is replaced by a stone engraved with the number 1.
@@ -17,9 +19,17 @@ def update_stone(stone):
         lstone = int(stone // 10**(ndigits/2))
         rstone = int(stone % 10**(ndigits/2))
         return (lstone,rstone)
-    else:
-        #If none of the other rules apply, the stone is replaced by a new stone; the old stone's number multiplied by 2024 is engraved on the new stone.
+    else: #If none of the other rules apply, the stone is replaced by a new stone; the old stone's number multiplied by 2024 is engraved on the new stone.
         return (stone * 2024,)
+
+@functools.lru_cache(maxsize=None)
+def watch_stone(stone, time):
+    new_stone = update_stone(stone)
+
+    if time == 1:
+        return len(new_stone)
+    else:
+        return sum([watch_stone(next_stone, time-1) for next_stone in new_stone])
 
 if __name__ == '__main__':
 
@@ -30,32 +40,26 @@ if __name__ == '__main__':
 
     options,args = parser.parse_args()
 
-#    with open(options.filename) as f:
-#        pass
-
     if options.dbg:
         #test_stones = [int(stone) for stone in test2.split()]
         test_stones = [0]
         stones = { 0 : test_stones }
         blink = 0
-        while blink != options.blinks:
-            blink += 1
-            stones[blink] = []
-            for stone in stones[blink-1]:
-                new_stone = update_stone(stone)
-                for stone in new_stone:
-                    stones[blink].append(stone) 
         print(len(stones[blink]))
         [print(stone) for stone in stones.items()]
 
     # part1
-    stones = { 0:[int(stone) for stone in data.split()] }
+    time = { 0:[int(stone) for stone in data.split()] }
     blink = 0
-    while blink != options.blinks:
+    while blink != 25:
         blink += 1
-        stones[blink] = []
-        for stone in stones[blink-1]:
+        time[blink] = []
+        for stone in time[blink-1]:
             new_stone = update_stone(stone)
             for stone in new_stone:
-                stones[blink].append(stone) 
-    print(f"You have {len(stones[blink])} stones after {blink} blinks")
+                time[blink].append(stone) 
+    print(f"You have {len(time[blink])} stones after {blink} blinks")
+
+    # part2, recurse and cache
+    part2 = sum([watch_stone(stone,options.blinks) for stone in time[0]])
+    print(f"You have {part2} stones after {options.blinks} blinks")
