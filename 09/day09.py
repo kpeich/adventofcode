@@ -12,7 +12,6 @@ def get_disk(data):
     return disk
 
 def defrag(disk):
-    defragged = []
     tail = -1
     for idx, data in enumerate(disk):
         if data != '.':
@@ -23,6 +22,24 @@ def defrag(disk):
             if (disk[tail] != '.') and (idx < len(disk)+tail):
                 disk[idx] = disk[tail]
                 disk[tail] = '.'
+    return disk
+
+def defrag_part2(disk):
+    fp = max([int(file) for file in disk if file != '.'])
+    head = disk.index('.')
+    while fp:
+        start = disk.index(str(fp))
+        end = len(disk) - disk[::-1].index(str(fp))
+        if head > start:
+            fp = 0
+        else:
+            for i in range(head, len(disk[:start])):
+                if ['.']*(end-start) == disk[i:i+(end-start)]:
+                    disk[i:i+(end-start)] = [str(fp)]*(end-start)
+                    disk[start:end] = ['.']*(end-start)
+                    head = disk.index('.')
+                    break
+            fp -= 1
     return disk
 
 if __name__ == '__main__':
@@ -43,11 +60,20 @@ if __name__ == '__main__':
         print(disk)
         checksum = sum([idx*int(data) for idx,data in enumerate(disk) if data != '.'])
         print(f"TEST: {checksum}")
+
+        disk = get_disk(test)
+        print(disk)
+        defrag_part2(disk)
+        print(disk)
+        checksum = sum([idx*int(data) for idx,data in enumerate(disk) if data != '.'])
+        print(f"TEST2: {checksum}")
         
     disk = get_disk(data)
     defrag(disk)
-    checksum = sum([idx*int(data) for idx,data in enumerate(disk) if data != '.'])
-    print(f"Part1: {checksum}")
+    part1 = sum([idx*int(data) for idx,data in enumerate(disk) if data != '.'])
+    print(f"Part1: {part1}")
 
-    part2 = 0
+    disk = get_disk(data)
+    defrag_part2(disk)
+    part2 = sum([idx*int(data) for idx,data in enumerate(disk) if data != '.'])
     print(f"Part2: {part2}")
