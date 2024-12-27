@@ -40,7 +40,6 @@ def get_possible_moves(loc, grid_size):
 
 
 def bfs(start, end, grid, dbg=False):
-    # BFS
     queue = [ {'loc': start, 'path': [],  'score': 0} ]
     visited = set()
     winners = []
@@ -62,13 +61,32 @@ def bfs(start, end, grid, dbg=False):
             return entry
     return winners
 
+def dfs(start, end, grid, cutoff, dbg=False):
+    queue = [ {'loc': start, 'path': [],  'score': 0} ]
+    winners = []
+    visited = set()
+
+    while queue:
+        entry = queue.pop()
+
+        if dbg:
+            print(queue)
+            print(entry['loc'])
+        if (entry['loc'][:2] != end):
+            if (entry['score'] > cutoff):
+                continue
+            else:
+                queue.extend([ {'loc': i , 'path': entry['path'] + [entry['loc']], 'score': entry['score'] + cost } for i,cost in get_possible_moves(entry['loc'], len(grid[0])-1) ])
+        else:
+            entry['path'].append(entry['loc'])
+            winners.append(entry) 
+    return winners
+
 
 if __name__ == '__main__':
     parser = optparse.OptionParser()
     parser.add_option("-f", "--file", dest="filename", help="input filename")
     parser.add_option("-d", "--debug", dest="dbg", help="enable debugging", action="store_true", default=False)
-    parser.add_option("-g", "--grid", dest="grid_size", help="size of grid", default=0, type=int)
-    parser.add_option("-b", "--bytes", dest="num_bytes", help="number of bytes to drop", default=0, type=int)
 
     options,args = parser.parse_args()
 
@@ -91,3 +109,10 @@ if __name__ == '__main__':
 
     winner = bfs(start, end, grid, dbg=options.dbg)
     print(f"part1: {winner['score']}")
+
+    winners = dfs(start, end, grid, winner['score'], dbg=options.dbg)
+    tiles = set()
+    for winner in winners:
+        for tile in winner['path']:
+            tiles.add(tile[:2])
+    print(f"part2: {len(tiles)}")
