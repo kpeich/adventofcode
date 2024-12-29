@@ -1,72 +1,72 @@
 import optparse
+'''
+Instructions:
+0: adv : mem[4] // 2**opA -> mem[4]
+1: bxl : mem[5] ^ opA -> mem[5]
+2: bst : mem mod8 -> mem[5]
+3: jnz : nop if regA=0 else ip -> opA (IP not increased by 2)
+4: bxc : mem[5] ^ mem[6] -> mem[5]
+5: out : mem mod8 -> outputs value
+6: bdv : regA // 2*opA -> mem[5]
+7: cdv : regA // 2*opA -> mem[6]
+'''
+class CPU:
+    def __init__(self, regA, regB, regC, program, dbg=False, part2=False):
+        self.ip = 0
+        #regA mem[5] mem[6] are in mem memory
+        self.output = []
+        self.program = program
+        self.mem = {0: 0 , 1: 1, 2: 2, 3: 3, 4: regA, 5: regB, 6: regC, 7: regA}
+        self.opcodes = {0: self.adv, 1: self.bxl, 2: self.bst, 3: self.jnz, 4: self.bxc, 5: self.out, 6: self.bdv, 7: self.cdv}
+        self.dbg = dbg
+        self.part2 = part2
+        
+    def adv(self):
+        #self.mem[4] = self.mem[4] // 2**self.mem[self.program[self.ip+1]]
+        self.mem[4] = self.mem[4] >> self.mem[self.program[self.ip+1]]
+        self.ip += 2
+    def bxl(self):
+        self.mem[5] = self.mem[5] ^ self.program[self.ip+1]
+        self.ip += 2
+    def bst(self):
+        self.mem[5] = self.mem[self.program[self.ip+1]] & 7
+        self.ip += 2
+    def jnz(self):
+        if self.mem[4] != 0:
+            self.ip = self.program[self.ip+1]
+        else: 
+            self.ip += 2
+    def bxc(self):
+        self.mem[5] = self.mem[5] ^ self.mem[6]
+        self.ip += 2
+    def out(self):
+        self.output.append(str(self.mem[self.program[self.ip+1]] & 7))
+        # if the program doesn't match, HALT
+        if (self.part2) and (int(self.output[-1]) != self.program[len(self.output)-1]):
+            self.ip = len(self.program) + 1
+        else:
+            if self.dbg:
+                print(f"OUT{len(self.output)}: {self.output[-1]}, regA: {self.mem[7]} ({bin(self.mem[7])}) PROG: {self.program[len(self.output)-1]}")
+            self.ip += 2
+    def bdv(self):
+        #self.mem[5] = self.mem[4] // 2**self.mem[self.program[self.ip+1]]
+        self.mem[5] = self.mem[4] >> self.mem[self.program[self.ip+1]]
+        self.ip += 2
+    def cdv(self):
+        #self.mem[6] = self.mem[4] // 2**self.mem[self.program[self.ip+1]]
+        self.mem[6] = self.mem[4] >> self.mem[self.program[self.ip+1]]
+        self.ip += 2
+    def run(self):
+        if self.dbg and self.part2==False:
+            print(f"OP: {self.opcodes[self.program[self.ip]].__name__} LITERAL: {self.program[self.ip+1]} MEM: {self.mem[self.program[self.ip+1]]:08} (MEM%8: {self.mem[self.program[self.ip+1]]%8}) regA: {self.mem[4]} ({bin(self.mem[4])[-3:]}) regB: {self.mem[5]} regC: {self.mem[6]}")
+        self.opcodes[self.program[self.ip]]()
+
 
 if __name__ == '__main__':
     parser = optparse.OptionParser()
     parser.add_option("-d", "--debug", dest="dbg", help="enable debugging", action="store_true", default=False)
 
     options,args = parser.parse_args()
-    '''
-    Instructions:
-    0: adv : mem[4] // 2**opA -> mem[4]
-    1: bxl : mem[5] ^ opA -> mem[5]
-    2: bst : mem mod8 -> mem[5]
-    3: jnz : nop if regA=0 else ip -> opA (IP not increased by 2)
-    4: bxc : mem[5] ^ mem[6] -> mem[5]
-    5: out : mem mod8 -> outputs value
-    6: bdv : regA // 2*opA -> mem[5]
-    7: cdv : regA // 2*opA -> mem[6]
-    '''
-    class CPU:
-        def __init__(self, regA, regB, regC, program, dbg=False, part2=False):
-            self.ip = 0
-            #regA mem[5] mem[6] are in mem memory
-            self.output = []
-            self.program = program
-            self.mem = {0: 0 , 1: 1, 2: 2, 3: 3, 4: regA, 5: regB, 6: regC, 7: regA}
-            self.opcodes = {0: self.adv, 1: self.bxl, 2: self.bst, 3: self.jnz, 4: self.bxc, 5: self.out, 6: self.bdv, 7: self.cdv}
-            self.dbg = dbg
-            self.part2 = part2
-            
-        def adv(self):
-            #self.mem[4] = self.mem[4] // 2**self.mem[self.program[self.ip+1]]
-            self.mem[4] = self.mem[4] >> self.mem[self.program[self.ip+1]]
-            self.ip += 2
-        def bxl(self):
-            self.mem[5] = self.mem[5] ^ self.program[self.ip+1]
-            self.ip += 2
-        def bst(self):
-            self.mem[5] = self.mem[self.program[self.ip+1]] & 7
-            self.ip += 2
-        def jnz(self):
-            if self.mem[4] != 0:
-                self.ip = self.program[self.ip+1]
-            else: 
-                self.ip += 2
-        def bxc(self):
-            self.mem[5] = self.mem[5] ^ self.mem[6]
-            self.ip += 2
-        def out(self):
-            self.output.append(str(self.mem[self.program[self.ip+1]] & 7))
-            # if the program doesn't match, HALT
-            if (self.part2) and (int(self.output[-1]) != self.program[len(self.output)-1]):
-                self.ip = len(self.program) + 1
-            else:
-                if self.dbg:
-                    print(f"OUT{len(self.output)}: {self.output[-1]}, regA: {self.mem[7]} ({bin(self.mem[7])}) PROG: {self.program[len(self.output)-1]}")
-                self.ip += 2
-        def bdv(self):
-            #self.mem[5] = self.mem[4] // 2**self.mem[self.program[self.ip+1]]
-            self.mem[5] = self.mem[4] >> self.mem[self.program[self.ip+1]]
-            self.ip += 2
-        def cdv(self):
-            #self.mem[6] = self.mem[4] // 2**self.mem[self.program[self.ip+1]]
-            self.mem[6] = self.mem[4] >> self.mem[self.program[self.ip+1]]
-            self.ip += 2
-        def run(self):
-            if self.dbg and self.part2==False:
-                print(f"OP: {self.opcodes[self.program[self.ip]].__name__} LITERAL: {self.program[self.ip+1]} MEM: {self.mem[self.program[self.ip+1]]:08} (MEM%8: {self.mem[self.program[self.ip+1]]%8}) regA: {self.mem[4]} ({bin(self.mem[4])[-3:]}) regB: {self.mem[5]} regC: {self.mem[6]}")
-            self.opcodes[self.program[self.ip]]()
-
 #    test1 = (0,0,9,[2,6])
 #    test2 = (10,0,0,[5,0,5,1,5,4])
 #    test3 = (2024, 0, 0, [0,1,5,4,3,0])
