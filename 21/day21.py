@@ -145,5 +145,7 @@ if __name__ == '__main__':
                 robot.move(press)
         print(f"{code}: {len(robots[-1].pressed)} * {int(code[:-1])} = {int(code[:-1]) * len(robots[-1].pressed)}")
         complexities[code] = int(code[:-1]) * len(rad.pressed)
-    print(f"part1: {sum([num for code,num in complexities.items()])}") #169390
+        if options.dbg:
+            [robot.print_movement() for robot in robots]
 
+    print(f"part1: {sum([num for code,num in complexities.items()])}") #169390
