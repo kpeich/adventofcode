@@ -1,4 +1,5 @@
 import optparse
+from datetime import datetime
 
 data = ['459A','671A','846A','285A','083A']
 test = ['029A','980A','179A','456A','379A']
@@ -144,8 +145,30 @@ if __name__ == '__main__':
             for press in robots[idx].pressed:
                 robot.move(press)
         print(f"{code}: {len(robots[-1].pressed)} * {int(code[:-1])} = {int(code[:-1]) * len(robots[-1].pressed)}")
-        complexities[code] = int(code[:-1]) * len(rad.pressed)
+        complexities[code] = int(code[:-1]) * len(robots[-1].pressed)
         if options.dbg:
             [robot.print_movement() for robot in robots]
 
-    print(f"part1: {sum([num for code,num in complexities.items()])}") #169390
+    print(f"part1: {sum([num for code,num in complexities.items()])}\n") #169390
+
+
+#    robots = [Numeric('Pinhead',data)]
+#    robots = robots + [Directional(f'robot{i}') for i in range(25)]
+#    complexities = {}
+#    start = datetime.now()
+#    for code in robots[0].codes:
+#        robots[0].reset()
+#        for button in code:
+#            robots[0].move(button)
+#        for idx,robot in enumerate(robots[1:]):
+#            robot.reset()
+#            for press in robots[idx].pressed:
+#                robot.move(press)
+#            print(f"{code}: Robot {robot.name} done [{(datetime.now() - start).total_seconds()}]")
+#        print(f"{code}: {len(robots[-1].pressed)} * {int(code[:-1])}")
+#        #print(f"{code}: {len(robots[-1].pressed)} * {int(code[:-1])} = {int(code[:-1]) * len(robots[-1].pressed)}")
+#        complexities[code] = int(code[:-1]) * len(robots[-1].pressed)
+#        if options.dbg:
+#            [robot.print_movement() for robot in robots]
+#
+#    print(f"part2: {sum([num for code,num in complexities.items()])}") #169390

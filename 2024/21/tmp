@@ -1,0 +1,74 @@
+['029A', '980A', '179A', '456A', '379A']
+459A: 74 * 459 = 33966
+NoOxy 14 ^^<<A>A^>AvvvA
+Iceman 30 <AAv<AA>>^AvA^A<Av>A^A<vAAA^>A
+Brad 74 v<<A>>^AA<vA<A>>^AAvAA<^A>A<vA^>A<A>Av<<A>>^A<vA>A^A<A>Av<<A>A^>AAA<Av>A^A
+671A: 74 * 671 = 49654
+NoOxy 14 ^^A<<^AvvA>>vA
+Iceman 30 <AA>Av<<AA>^A>A<vAA^>AvAA<A^>A
+Brad 74 v<<A>>^AAvA^A<vA<AA>>^AAvA<^A>AvA^Av<<A>A^>AA<Av>A^A<vA^>AAv<<A>>^A<Av>A^A
+846A: 72 * 846 = 60912
+NoOxy 14 <^^^A<vA>>AvvA
+Iceman 32 v<<A>^AAA>Av<<A>A^>AvAA^A<vAA^>A
+Brad 72 <vA<AA>>^AvA<^A>AAAvA^A<vA<AA>>^AvA^A<Av>A^A<vA^>AA<A>Av<<A>A^>AA<Av>A^A
+285A: 68 * 285 = 19380
+NoOxy 12 <^A^^AvAvv>A
+Iceman 28 v<<A>^A>A<AA>A<vA^>A<vAA>A^A
+Brad 68 <vA<AA>>^AvA<^A>AvA^Av<<A>>^AAvA^Av<<A>A^>A<Av>A^Av<<A>A^>AAvA^A<A>A
+083A: 66 * 83 = 5478
+NoOxy 12 <A^^^Avv>AvA
+Iceman 28 v<<A>>^A<AAA>A<vAA>A^A<vA^>A
+Brad 66 <vA<AA>>^AvAA<^A>Av<<A>>^AAAvA^Av<<A>A^>AAvA^A<A>Av<<A>A^>A<Av>A^A
+part1: 169390
+
+459A: Robot robot0 done [2e-05]
+459A: Robot robot1 done [4.9e-05]
+459A: Robot robot2 done [0.000114]
+459A: Robot robot3 done [0.000262]
+459A: 444 * 459
+Pinhead 14 ^^<<A>A^>AvvvA
+robot0 30 <AAv<AA>>^AvA^A<Av>A^A<vAAA^>A
+robot1 74 v<<A>>^AA<vA<A>>^AAvAA<^A>A<vA^>A<A>Av<<A>>^A<vA>A^A<A>Av<<A>A^>AAA<Av>A^A
+robot2 182 <vA<AA>>^AvAA<^A>AAv<<A>A^>Av<<A>>^AvAA<^A>AA<vA^>AAv<<A>^A>AvA^Av<<A>A^>A<Av>A^Av<<A>>^AvA^A<vA<AA>>^AvAA<^A>Av<<A>A^>AvA^A<A>Av<<A>>^AvA^A<vA<AA>>^AvA^A<Av>A^AAAv<<A>>^A<vA>A^A<A>A
+robot3 444 v<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>AAv<<A>^A>AvA^AA<vA<AA>>^AvA^A<Av>A^A<vA<AA>>^AvAA<^A>A<vA^>AAv<<A>^A>AvA^AAv<<A>A^>A<Av>A^AA<vA<AA>>^AvA<^A>AvA^A<vA^>A<A>A<vA<AA>>^AvA^A<Av>A^Av<<A>>^A<vA>A^A<A>A<vA<AA>>^AvAA<^A>A<vA^>A<A>Av<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>AAv<<A>^A>AvA^A<vA<AA>>^AvA^A<Av>A^A<vA^>A<A>Av<<A>>^AvA^A<vA<AA>>^AvAA<^A>A<vA^>A<A>Av<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>A<A>Av<<A>>^A<vA>A^A<A>AAA<vA<AA>>^AvAA<^A>Av<<A>A^>AvA^A<A>Av<<A>>^AvA^A
+671A: Robot robot0 done [0.000288]
+671A: Robot robot1 done [0.000311]
+671A: Robot robot2 done [0.000363]
+671A: Robot robot3 done [0.000489]
+671A: 448 * 671
+Pinhead 14 ^^A<<^AvvA>>vA
+robot0 30 <AA>Av<<AA>^A>A<vAA^>AvAA<A^>A
+robot1 74 v<<A>>^AAvA^A<vA<AA>>^AAvA<^A>AvA^Av<<A>A^>AA<Av>A^A<vA^>AAv<<A>>^A<Av>A^A
+robot2 180 <vA<AA>>^AvAA<^A>AA<vA^>A<A>Av<<A>A^>Av<<A>>^AAvAA<^A>AA<vA^>Av<<A>^A>AvA^A<vA^>A<A>A<vA<AA>>^AvA^A<Av>A^AAv<<A>>^A<vA>A^A<A>Av<<A>A^>A<Av>A^AA<vA<AA>>^AvAA<^A>Av<<A>>^A<vA>A^A<A>A
+robot3 448 v<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>AAv<<A>^A>AvA^AAv<<A>A^>A<Av>A^Av<<A>>^AvA^A<vA<AA>>^AvA^A<Av>A^A<vA<AA>>^AvAA<^A>AA<vA^>AAv<<A>^A>AvA^AAv<<A>A^>A<Av>A^A<vA<AA>>^AvA<^A>AvA^A<vA^>A<A>Av<<A>A^>A<Av>A^Av<<A>>^AvA^Av<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>A<A>Av<<A>>^A<vA>A^A<A>AA<vA<AA>>^AvAA<^A>Av<<A>A^>AvA^A<A>Av<<A>>^AvA^A<vA<AA>>^AvA^A<Av>A^Av<<A>>^A<vA>A^A<A>AAv<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>AAv<<A>^A>AvA^A<vA<AA>>^AvAA<^A>Av<<A>A^>AvA^A<A>Av<<A>>^AvA^A
+846A: Robot robot0 done [0.00051]
+846A: Robot robot1 done [0.000534]
+846A: Robot robot2 done [0.000584]
+846A: Robot robot3 done [0.000723]
+846A: 444 * 846
+Pinhead 14 <^^^A<vA>>AvvA
+robot0 32 v<<A>^AAA>Av<<A>A^>AvAA^A<vAA^>A
+robot1 72 <vA<AA>>^AvA<^A>AAAvA^A<vA<AA>>^AvA^A<Av>A^A<vA^>AA<A>Av<<A>A^>AA<Av>A^A
+robot2 182 v<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>Av<<A>^A>AvA^AAA<vA^>A<A>Av<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>A<A>Av<<A>>^A<vA>A^A<A>Av<<A>A^>A<Av>A^AAv<<A>>^AvA^A<vA<AA>>^AvA^A<Av>A^AAv<<A>>^A<vA>A^A<A>A
+robot3 444 <vA<AA>>^AvA^A<Av>A^A<vA<AA>>^AvAA<^A>AA<vA^>AAv<<A>^A>AvA^Av<<A>A^>A<Av>A^A<vA<AA>>^AvA<^A>AvA^A<vA^>A<A>AAAv<<A>A^>A<Av>A^Av<<A>>^AvA^A<vA<AA>>^AvA^A<Av>A^A<vA<AA>>^AvAA<^A>AA<vA^>AAv<<A>^A>AvA^Av<<A>A^>A<Av>A^Av<<A>>^AvA^A<vA<AA>>^AvAA<^A>Av<<A>A^>AvA^A<A>Av<<A>>^AvA^A<vA<AA>>^AvA^A<Av>A^Av<<A>>^A<vA>A^A<A>AA<vA<AA>>^AvAA<^A>A<vA^>A<A>Av<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>A<A>Av<<A>>^A<vA>A^A<A>AA<vA<AA>>^AvAA<^A>Av<<A>A^>AvA^A<A>Av<<A>>^AvA^A
+285A: Robot robot0 done [0.000748]
+285A: Robot robot1 done [0.000769]
+285A: Robot robot2 done [0.000817]
+285A: Robot robot3 done [0.000931]
+285A: 424 * 285
+Pinhead 12 <^A^^AvAvv>A
+robot0 28 v<<A>^A>A<AA>A<vA^>A<vAA>A^A
+robot1 68 <vA<AA>>^AvA<^A>AvA^Av<<A>>^AAvA^Av<<A>A^>A<Av>A^Av<<A>A^>AAvA^A<A>A
+robot2 168 v<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>Av<<A>^A>AvA^A<vA^>A<A>A<vA<AA>>^AvAA<^A>AA<vA^>A<A>A<vA<AA>>^AvA^A<Av>A^Av<<A>>^A<vA>A^A<A>A<vA<AA>>^AvA^A<Av>A^AA<vA^>A<A>Av<<A>>^AvA^A
+robot3 424 <vA<AA>>^AvA^A<Av>A^A<vA<AA>>^AvAA<^A>AA<vA^>AAv<<A>^A>AvA^Av<<A>A^>A<Av>A^A<vA<AA>>^AvA<^A>AvA^A<vA^>A<A>Av<<A>A^>A<Av>A^Av<<A>>^AvA^Av<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>AAv<<A>^A>AvA^AAv<<A>A^>A<Av>A^Av<<A>>^AvA^Av<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>A<A>Av<<A>>^A<vA>A^A<A>A<vA<AA>>^AvAA<^A>Av<<A>A^>AvA^A<A>Av<<A>>^AvA^Av<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>A<A>Av<<A>>^A<vA>A^A<A>AAv<<A>A^>A<Av>A^Av<<A>>^AvA^A<vA<AA>>^AvAA<^A>A<vA^>A<A>A
+083A: Robot robot0 done [0.000951]
+083A: Robot robot1 done [0.000971]
+083A: Robot robot2 done [0.001017]
+083A: Robot robot3 done [0.00114]
+083A: 398 * 83
+Pinhead 12 <A^^^Avv>AvA
+robot0 28 v<<A>>^A<AAA>A<vAA>A^A<vA^>A
+robot1 66 <vA<AA>>^AvAA<^A>Av<<A>>^AAAvA^Av<<A>A^>AAvA^A<A>Av<<A>A^>A<Av>A^A
+robot2 160 v<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>AAv<<A>^A>AvA^A<vA<AA>>^AvAA<^A>AAA<vA^>A<A>A<vA<AA>>^AvA^A<Av>A^AA<vA^>A<A>Av<<A>>^AvA^A<vA<AA>>^AvA^A<Av>A^Av<<A>>^A<vA>A^A<A>A
+robot3 398 <vA<AA>>^AvA^A<Av>A^A<vA<AA>>^AvAA<^A>AA<vA^>AAv<<A>^A>AvA^Av<<A>A^>A<Av>A^AA<vA<AA>>^AvA<^A>AvA^A<vA^>A<A>Av<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>AAv<<A>^A>AvA^AAAv<<A>A^>A<Av>A^Av<<A>>^AvA^Av<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>A<A>Av<<A>>^A<vA>A^A<A>AAv<<A>A^>A<Av>A^Av<<A>>^AvA^A<vA<AA>>^AvAA<^A>A<vA^>A<A>Av<<A>A^>Av<<A>>^AAvAA<^A>A<vA^>A<A>Av<<A>>^A<vA>A^A<A>A<vA<AA>>^AvAA<^A>Av<<A>A^>AvA^A<A>Av<<A>>^AvA^A
+part1: 1033902
