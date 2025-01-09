@@ -7,9 +7,21 @@ if __name__ == '__main__':
 
     options,args = parser.parse_args()
 
+    map_dict = {}
     with open(options.filename) as f:
-        data = [line.strip() for line in f]
+        for line in f:
+            city1, to, city2, eq, distance = line.strip().split()
+            if city1 in map_dict:
+                map_dict[city1][city2] = int(distance)
+            else:
+                map_dict[city1] = {city2 : int(distance)}
 
+            if city2 in map_dict:
+                map_dict[city2][city1] = int(distance)
+            else:
+                map_dict[city2] = {city1 : int(distance)}
+
+    print(map_dict)
     if options.dbg:
         pass
 
